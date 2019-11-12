@@ -6,7 +6,7 @@ This tutorial will explain and show you how to access the **Steem** blockchain u
 
 ## Intro
 
-In Steem there are built-in filters `trending`, `hot`, `created`, `active`, `promoted` etc. which helps us to get list of posts. `get_discussions_by_trending(query)`, `get_discussions_by_hot(query)`, `get_discussions_by_created(query)`, etc. functions are built-in in official library `steem-python` that we are going to use throughout all Python tutorials. 
+In Steem there are built-in filters `trending`, `hot`, `created`, `promoted` etc. which helps us to get list of posts. `get_discussions_by_trending(query)`, `get_discussions_by_hot(query)`, `get_discussions_by_created(query)`, etc. functions are built-in in official library `steem-python` that we are going to use throughout all Python tutorials. 
 
 
 ## Steps
@@ -38,7 +38,7 @@ Next we will make list of filters and setup `pick` properly.
 ```python
     title = 'Please choose filter: '
     #filters list
-    options = ['trending', 'hot', 'active', 'created', 'promoted']
+    options = ['trending', 'hot', 'created', 'promoted']
     # get index and selected filter name
     option, index = pick(options, title)
 ```
@@ -60,9 +60,8 @@ query = {
 #post list for selected query
 posts = {0: s.get_discussions_by_trending(query),
          1: s.get_discussions_by_hot(query),
-         2: s.get_discussions_by_active(query),
-         3: s.get_discussions_by_created(query),
-         4: s.get_discussions_by_promoted(query)
+         2: s.get_discussions_by_created(query),
+         3: s.get_discussions_by_promoted(query)
 }
 ```
 
@@ -166,4 +165,3 @@ That's it!
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.
-
