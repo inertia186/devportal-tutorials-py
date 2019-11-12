@@ -8,7 +8,6 @@ This tutorial will explain and show you how to access the **Steem** blockchain u
 
 In Steem there are built-in filters `trending`, `hot`, `created`, `promoted` etc. which helps us to get list of posts. `get_discussions_by_trending(query)`, `get_discussions_by_hot(query)`, `get_discussions_by_created(query)`, etc. functions are built-in in official library `steem-python` that we are going to use throughout all Python tutorials. 
 
-
 ## Steps
 
 1.  [**App setup**](#app-setup) - Library install and import
@@ -23,12 +22,12 @@ In this tutorial we use 3 packages, `pick` - helps us to select filter interacti
 First we import all three library and initialize Steem class
 
 ```python
-    import pprint
-    from pick import pick
-    # initialize Steem class
-    from steem import Steem
+import pprint
+from pick import pick
+# initialize Steem class
+from steem import Steem
 
-    s = Steem()
+s = Steem()
 ```
 
 #### 2. Filters list <a name="filters-list"></a>
@@ -36,11 +35,13 @@ First we import all three library and initialize Steem class
 Next we will make list of filters and setup `pick` properly.
 
 ```python
-    title = 'Please choose filter: '
-    #filters list
-    options = ['trending', 'hot', 'created', 'promoted']
-    # get index and selected filter name
-    option, index = pick(options, title)
+title = 'Please choose filter: '
+
+#filters list
+options = ['trending', 'hot', 'created', 'promoted']
+
+# get index and selected filter name
+option, index = pick(options, title)
 ```
 
 This will show us list of filters to select in terminal/command prompt. And after selection we will get index and filter name to `index` and `option` variables.
@@ -54,14 +55,16 @@ Next we will form a query. In Steem,
 
 ```python
 query = {
-    "limit":2, #number of posts
-    "tag":"" #tag of posts
-    }
+  "limit": 2, #number of posts
+  "tag": "" #tag of posts
+}
+
 #post list for selected query
-posts = {0: s.get_discussions_by_trending(query),
-         1: s.get_discussions_by_hot(query),
-         2: s.get_discussions_by_created(query),
-         3: s.get_discussions_by_promoted(query)
+posts = {
+  0: s.get_discussions_by_trending(query),
+  1: s.get_discussions_by_hot(query),
+  2: s.get_discussions_by_created(query),
+  3: s.get_discussions_by_promoted(query)
 }
 ```
 
@@ -72,9 +75,9 @@ Above code shows example of query and simple list of function that will fetch po
 Next, we will print result, post list and selected filter name.
 
 ```python
-    # print post list for selected filter
-    pprint.pprint(posts[index])
-    pprint.pprint("Selected: "+option)
+# print post list for selected filter
+pprint.pprint(posts[index])
+pprint.pprint("Selected: " + option)
 ```
 
 The example of result returned from the service is a `JSON` object with the following properties:
@@ -159,9 +162,9 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](../00_getting_started)
-1.  clone this repo
-1.  `cd tutorials/04_get_posts`
-1.  `pip install -r requirements.txt`
-1.  `python index.py`
-1.  After a few moments, you should see output in terminal/command prompt screen.
+1. [review dev requirements](../00_getting_started)
+1. clone this repo
+1. `cd tutorials/04_get_posts`
+1. `pip install -r requirements.txt`
+1. `python index.py`
+1. After a few moments, you should see output in terminal/command prompt screen.
